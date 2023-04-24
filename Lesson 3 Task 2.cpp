@@ -5,20 +5,17 @@
 class Counter
 {
 private:
-	char op;
 	unsigned int initial_counter;
 
 public:
-	std::string yes_no;
+	/*char op;*/
 
-	Counter(std::string yes_no, unsigned int initial_counter, char op)	//это конструктор с параметрами
+	Counter(unsigned int initial_counter)								//это конструктор с параметром
 	{
-		this->yes_no = yes_no;										    // инициализация
 		if (initial_counter < 1)
 			this->initial_counter != initial_counter;
 		else
 			this->initial_counter = 1;									// если значение некорректное, устанавливаем значение по умолчанию
-		this->op = op;													// инициализация
 	}
 
 	void set_initial_counter(unsigned int initial_counter)
@@ -34,9 +31,20 @@ public:
 		return initial_counter;
 	}
 
-	unsigned int set_initial_counter()								    // set и имя переменной,
+	void set_initial_counter()											// set и имя переменной,
 	{																	// которую инициализируют
-		std::cin >> initial_counter;   
+		std::cin >> initial_counter;
+	}
+
+	void plus()
+	{
+		this->initial_counter++;
+	}
+
+	void minus()
+
+	{
+		this->initial_counter--;
 	}
 };
 
@@ -45,19 +53,20 @@ int main(int argc, char** argv)
 	SetConsoleCP(1251);													//устанавливает кодировку ввода из консоли и из редактора кода
 	SetConsoleOutputCP(1251);											//устанавливает кодировку вывода на консоль
 
-	Counter count{ "", 1, '+' };
+	Counter count{ 1 };
 
-	count.yes_no;
+	std::string yes_no;
+	char op;
 
 	std::cout << "Вы хотите указать начальное значение счетчика? " << "Введите да или нет: ";
-	std::cin >> count.yes_no;
+	std::cin >> yes_no;
 
-	if (count.yes_no == "да")
+	if (yes_no == "да")
 	{
 		std::cout << "Введите начальное значение счетчика: ";
-		std::cin >> count.set_initial_counter;
+		count.set_initial_counter();
 	}
-	else if (count.yes_no == "нет")
+	else if (yes_no == "нет")
 	{
 		return 0;
 	}
@@ -68,17 +77,15 @@ int main(int argc, char** argv)
 
 		if (op == '+')
 		{
-			initial_counter++;
-			continue;
+			count.plus();
 		}
 		if (op == '-')
 		{
-			initial_counter--;
-			continue;
+			count.minus();
 		}
 		if (op == '=')
 		{
-			std::cout << initial_counter << std::endl;
+			std::cout << count.get_initial_counter() << std::endl;
 			continue;
 		}
 		if (op == 'x')
