@@ -8,22 +8,15 @@ private:
 	unsigned int initial_counter;
 
 public:
-	/*char op;*/
-
+	
 	Counter(unsigned int initial_counter)								//это конструктор с параметром
 	{
-		if (initial_counter < 1)
-			this->initial_counter != initial_counter;
-		else
-			this->initial_counter = 1;									// если значение некорректное, устанавливаем значение по умолчанию
+		this->initial_counter = initial_counter;
 	}
 
-	void set_initial_counter(unsigned int initial_counter)
+	Counter()															//это конструктор без параметров
 	{
-		if (initial_counter < 1)
-			this->initial_counter != initial_counter;
-		else
-			this->initial_counter = 1;
+		this->initial_counter = 1;										
 	}
 
 	unsigned get_initial_counter()
@@ -31,10 +24,10 @@ public:
 		return initial_counter;
 	}
 
-	void set_initial_counter()											// set и им€ переменной,
-	{																	// которую инициализируют
-		std::cin >> initial_counter;
-	}
+	//void set_initial_counter()										// set и им€ переменной,
+	//{																	// которую инициализируют
+	//	std::cin >> initial_counter;
+	//}
 
 	void plus()
 	{
@@ -48,28 +41,8 @@ public:
 	}
 };
 
-int main(int argc, char** argv)
+void operations(char op, )
 {
-	SetConsoleCP(1251);													//устанавливает кодировку ввода из консоли и из редактора кода
-	SetConsoleOutputCP(1251);											//устанавливает кодировку вывода на консоль
-
-	Counter count{ 1 };
-
-	std::string yes_no;
-	char op;
-
-	std::cout << "¬ы хотите указать начальное значение счетчика? " << "¬ведите да или нет: ";
-	std::cin >> yes_no;
-
-	if (yes_no == "да")
-	{
-		std::cout << "¬ведите начальное значение счетчика: ";
-		count.set_initial_counter();
-	}
-	else if (yes_no == "нет")
-	{
-		return 0;
-	}
 	do
 	{
 		std::cout << "¬ведите команду('+', '-', '=' или 'x'): ";
@@ -94,6 +67,38 @@ int main(int argc, char** argv)
 			break;
 		}
 	} while (op != 'x');
+
+}
+
+int main(int argc, char** argv)
+{
+	SetConsoleCP(1251);													//устанавливает кодировку ввода из консоли и из редактора кода
+	SetConsoleOutputCP(1251);											//устанавливает кодировку вывода на консоль
+
+	Counter count;
+	std::string yes_no;
+	char op;
+	count.initial_counter;
+
+	std::cout << "¬ы хотите указать начальное значение счетчика? " << "¬ведите да или нет: ";
+	std::cin >> yes_no;
+
+	
+	if (yes_no == "да")
+	{
+		std::cout << "¬ведите начальное значение счетчика: ";
+		Counter count(1);
+		std::cin >> count.initial_counter;
+		//count.set_initial_counter();
+	}
+	else if (yes_no == "нет")
+	{
+		return 0;
+	}
+
+	operations(op, );
+
+	return 0;
 }
 
 
