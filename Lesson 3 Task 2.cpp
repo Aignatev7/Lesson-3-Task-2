@@ -8,7 +8,7 @@ private:
 	unsigned int initial_counter;
 
 public:
-	
+
 	Counter(unsigned int initial_counter)								//это конструктор с параметром
 	{
 		this->initial_counter = initial_counter;
@@ -16,18 +16,13 @@ public:
 
 	Counter()															//это конструктор без параметров
 	{
-		this->initial_counter = 1;										
+		this->initial_counter = 1;
 	}
 
 	unsigned get_initial_counter()
 	{
 		return initial_counter;
 	}
-
-	//void set_initial_counter()										// set и имя переменной,
-	//{																	// которую инициализируют
-	//	std::cin >> initial_counter;
-	//}
 
 	void plus()
 	{
@@ -41,8 +36,9 @@ public:
 	}
 };
 
-void operations(char op, )
+void operations(Counter& count)
 {
+	char op;
 	do
 	{
 		std::cout << "Введите команду('+', '-', '=' или 'x'): ";
@@ -67,7 +63,6 @@ void operations(char op, )
 			break;
 		}
 	} while (op != 'x');
-
 }
 
 int main(int argc, char** argv)
@@ -77,27 +72,28 @@ int main(int argc, char** argv)
 
 	Counter count;
 	std::string yes_no;
-	char op;
-	count.initial_counter;
-
+	
 	std::cout << "Вы хотите указать начальное значение счетчика? " << "Введите да или нет: ";
 	std::cin >> yes_no;
 
-	
 	if (yes_no == "да")
 	{
 		std::cout << "Введите начальное значение счетчика: ";
-		Counter count(1);
-		std::cin >> count.initial_counter;
-		//count.set_initial_counter();
+		int value;
+		std::cin >> value;
+		Counter count(value);
+		operations(count);
+		std::cout << value;
 	}
 	else if (yes_no == "нет")
 	{
 		return 0;
 	}
-
-	operations(op, );
-
+	else
+	{
+		Counter count();
+		/*operations(count);*/
+	}
 	return 0;
 }
 
