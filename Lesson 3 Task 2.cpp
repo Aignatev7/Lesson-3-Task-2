@@ -70,7 +70,6 @@ int main(int argc, char** argv)
 	SetConsoleCP(1251);													//устанавливает кодировку ввода из консоли и из редактора кода
 	SetConsoleOutputCP(1251);											//устанавливает кодировку вывода на консоль
 
-	Counter count;
 	std::string yes_no;
 	
 	std::cout << "¬ы хотите указать начальное значение счетчика? " << "¬ведите да или нет: ";
@@ -87,12 +86,12 @@ int main(int argc, char** argv)
 	}
 	else if (yes_no == "нет")
 	{
-		return 0;
+		Counter count;
+		operations(count);
 	}
 	else
 	{
-		Counter count();
-		/*operations(count);*/
+		return 0;
 	}
 	return 0;
 }
